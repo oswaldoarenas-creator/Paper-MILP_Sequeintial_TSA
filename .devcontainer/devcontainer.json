@@ -1,21 +1,18 @@
 {
   "name": "asigna-env",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/miniconda:0-3",
 
-  "features": {
-    "github.com/devcontainers/features/conda:1": {
-      "version": "latest",
-      "environmentFile": "environment.yml"
-    }
-  },
-
-  "postCreateCommand": "conda env update -f environment.yml && conda activate asigna",
+  "postCreateCommand": "conda env update -f environment.yml && conda clean -a -y",
 
   "customizations": {
     "vscode": {
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/conda/envs/asigna/bin/python"
-      }
+        "python.defaultInterpreterPath": "/opt/conda/envs/asigna/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
     }
   }
 }
